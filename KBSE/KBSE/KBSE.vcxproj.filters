@@ -21,12 +21,18 @@
     <ClCompile Include="Checkforinputs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Saving_Load.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Checkforinputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Saving_Load.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

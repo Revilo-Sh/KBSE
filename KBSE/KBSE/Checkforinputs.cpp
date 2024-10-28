@@ -25,7 +25,7 @@ void Checkforinputs::pressDown()
 		{
 			if (GetAsyncKeyState(Index) < 0 && keyPressed == false) {
 				if (GetKeyState(Index) & 0x8000) {
-					std::cout << "You pressed " << VaildKeys[Index] << std::endl;
+					std::cout << VaildKeys[Index] << std::endl;
 					keyPressed = true;
 					break;
 				}
@@ -36,15 +36,16 @@ void Checkforinputs::pressDown()
 	if (GetAsyncKeyState(Index) == 0 && isDown == true) {
 		isDown = false;
 		keyPressed = false;
-		std::cout << "Up" << endl;
+
 	}
 
 	if (GetAsyncKeyState(Index) < 0 && isDown == false) {
 		isDown = true;
-		std::cout << "Down" << endl;
 	}
 
 }
+
+
 
 
 
