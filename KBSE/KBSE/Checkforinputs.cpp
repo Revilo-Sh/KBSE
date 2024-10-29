@@ -22,7 +22,7 @@ void Checkforinputs::AddToList()
 void Checkforinputs::pressDown()
 {
 	if (!keyPressed) {
-		for (Index = 0; Index < 184; Index++)
+		for (Index = 0; Index < 190; Index++)
 		{
 			if (GetAsyncKeyState(Index) < 0 && keyPressed == false) {
 				if (GetKeyState(Index) & 0x8000) {
@@ -31,7 +31,12 @@ void Checkforinputs::pressDown()
 					inputindex = 1;
 					break;
 				}
+				else
+				{
+					cout << "cant Find Key" << endl;
+				}
 			}
+			
 		}
 	}
 
