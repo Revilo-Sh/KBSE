@@ -12,7 +12,9 @@ public:
 	bool keyPressed = false;
 	bool isDown = false;
 	int Index;
+	int inputindex;
 
+	bool SoundPlayRate = true;
 
 
 	const char* VaildKeys[184] = { "0x07", "0x08", "0x09", "0x0A-0B", "0x0C", "0x0D", "0x0E-0F", "0x10", "0x11", "0x12", "0x13", "0x14", "0x15", "0x15",

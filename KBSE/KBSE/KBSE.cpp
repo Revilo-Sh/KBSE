@@ -10,12 +10,13 @@ using namespace std;
 
 Checkforinputs mInputs;
 Saving_Load SaveLoad;
-
-
-
-
 bool StartEffect = false;
 int DarkModeState = 2;
+
+#define MaxSoundChannels 10
+Sound soundArray[MaxSoundChannels] = { 0 };
+int currentSound;
+
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -28,13 +29,19 @@ int main()
     const int screenHeight = 800;
 
     InitWindow(screenWidth, screenHeight, "KBSE - [KeyBoard Sound Effects]");
-    
+    InitAudioDevice();
+
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-   
+    
 
     Texture2D KeyBoard = LoadTexture("Textures/Keyboard.png");
+    soundArray[0] = LoadSound("Sounds/ClickSound.wav");
 
+    for (int i = 1; i < MaxSoundChannels; i++) {
+        soundArray[i] = LoadSoundAlias(soundArray[0]);
+    }
+    currentSound = 0;
 
 
     Color DarkBlueGrey;
@@ -82,17 +89,24 @@ int main()
         }
 
 
-
-
-
-
-
         // CODE RUN ZONE
         if (StartEffect == true) {
           mInputs.pressDown(); // Check To See if a keyboard key is press 
         }
        
        
+        if (mInputs.inputindex == 1) {
+
+            if (mInputs.SoundPlayRate == true) {
+                PlaySound(soundArray[currentSound]);
+                currentSound++;
+                if (currentSound >= MaxSoundChannels) {
+                    currentSound = 0;
+                }
+                mInputs.SoundPlayRate = false;
+            }
+           
+        }
       
 
         // Draw
@@ -132,6 +146,11 @@ int main()
     // De-Initialization
     //--------------------------------------------------------------------------------------
     
+    for (int i = 1; i < MaxSoundChannels; i++) {
+        UnloadSoundAlias(soundArray[i]);
+    }
+    UnloadSound(soundArray[0]);
+
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 

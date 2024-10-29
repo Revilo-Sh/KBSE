@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 
+
 using namespace std;
 
 Checkforinputs::Checkforinputs()
@@ -27,6 +28,7 @@ void Checkforinputs::pressDown()
 				if (GetKeyState(Index) & 0x8000) {
 					std::cout << VaildKeys[Index] << std::endl;
 					keyPressed = true;
+					inputindex = 1;
 					break;
 				}
 			}
@@ -36,7 +38,10 @@ void Checkforinputs::pressDown()
 	if (GetAsyncKeyState(Index) == 0 && isDown == true) {
 		isDown = false;
 		keyPressed = false;
-
+		inputindex = 0;
+		SoundPlayRate = true;
+		
+		
 	}
 
 	if (GetAsyncKeyState(Index) < 0 && isDown == false) {
